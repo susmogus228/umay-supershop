@@ -205,6 +205,12 @@ setTimeout(() => document.getElementById('pwInput').focus(), 100);
 <div id="dynChartContainer" style="background:var(--bg-elev);border:1px solid var(--border);border-radius:12px;padding:20px;margin-bottom:20px">
   <div id="dynChartTitle" style="font-size:14px;font-weight:700;color:var(--text);margin-bottom:4px"></div>
   <div id="dynChartSubtitle" style="font-size:11px;color:var(--text-4);margin-bottom:16px"></div>
+  <div id="cpiToggles" class="bg" style="display:none;gap:6px;margin-bottom:14px;flex-wrap:wrap">
+    <span style="font-size:11px;color:var(--text-4);align-self:center;margin-right:4px">Линии:</span>
+    <button class="fb active" data-series="Общий" onclick="toggleCpiSeries('Общий')">🔵 Общий</button>
+    <button class="fb active" data-series="Meta" onclick="toggleCpiSeries('Meta')">🟠 Meta</button>
+    <button class="fb active" data-series="Google" onclick="toggleCpiSeries('Google')">🟢 Google</button>
+  </div>
   <div id="dynChartArea" style="overflow-x:auto"></div>
 </div>
 <div id="dynTableContainer" style="margin-bottom:20px"></div>
@@ -1814,12 +1820,19 @@ const DYN_REG=[["2026-03-12", 7], ["2026-03-13", 3], ["2026-03-14", 4], ["2026-0
 const DYN_STORES=[["2026-03-12", 0, 0, 0], ["2026-03-13", 0, 2, 2], ["2026-03-14", 0, 0, 0], ["2026-03-15", 1, 0, 1], ["2026-03-16", 0, 0, 0], ["2026-03-17", 0, 0, 0], ["2026-03-18", 0, 0, 0], ["2026-03-19", 0, 0, 0], ["2026-03-20", 252, 13, 265], ["2026-03-21", 186, 536, 722], ["2026-03-22", 925, 725, 1650], ["2026-03-23", 799, 739, 1538], ["2026-03-24", 721, 550, 1271], ["2026-03-25", 1517, 1407, 2924], ["2026-03-26", 1383, 1483, 2866], ["2026-03-27", 1632, 1600, 3232], ["2026-03-28", 1832, 1376, 3208], ["2026-03-29", 1552, 1311, 2863], ["2026-03-30", 1404, 1041, 2445], ["2026-03-31", 1262, 1024, 2286], ["2026-04-01", 1270, 1014, 2284], ["2026-04-02", 1180, 1121, 2301], ["2026-04-03", 1195, 992, 2187], ["2026-04-04", 1049, 924, 1973], ["2026-04-05", 1381, 1076, 2457], ["2026-04-06", 1002, 843, 1845], ["2026-04-07", 1063, 856, 1919], ["2026-04-08", 1089, 845, 1934], ["2026-04-09", 597, 838, 1435], ["2026-04-10", 1199, 1204, 2403], ["2026-04-11", 1256, 1052, 2308], ["2026-04-12", 1053, 939, 1992], ["2026-04-13", 838, 783, 1621], ["2026-04-14", 836, 839, 1675], ["2026-04-15", 865, 855, 1720], ["2026-04-16", 1002, 907, 1909], ["2026-04-17", 759, 704, 1463], ["2026-04-18", 835, 927, 1762], ["2026-04-19", 224, 218, 442], ["2026-04-20", 368, 423, 791], ["2026-04-21", 1044, 956, 2000], ["2026-04-22", 1134, 1088, 2222], ["2026-04-23", 1276, 1124, 2400], ["2026-04-24", 1424, 1026, 2450], ["2026-04-25", 886, 620, 1506], ["2026-04-26", 800, 418, 1218], ["2026-04-27", 989, 472, 1461], ["2026-04-28", 1058, 708, 1766], ["2026-04-29", 916, 653, 1569], ["2026-04-30", 938, 550, 1488], ["2026-05-01", 1078, 498, 1576], ["2026-05-02", 1182, 471, 1653], ["2026-05-03", 1222, 536, 1758], ["2026-05-04", 1082, 476, 1558], ["2026-05-05", 1041, 587, 1628], ["2026-05-06", 903, 393, 1296], ["2026-05-07", 1229, 1084, 2313], ["2026-05-08", 878, 841, 1719], ["2026-05-09", 827, 878, 1705], ["2026-05-10", 1125, 940, 2065], ["2026-05-11", 904, 731, 1635], ["2026-05-12", 936, 739, 1675], ["2026-05-13", 927, 656, 1583], ["2026-05-14", 758, 631, 1389], ["2026-05-15", 778, 486, 1264], ["2026-05-16", 715, 482, 1197], ["2026-05-17", 865, 512, 1377], ["2026-05-18", 712, 439, 1151], ["2026-05-19", 566, 349, 915], ["2026-05-20", 617, 310, 927], ["2026-05-21", 547, 300, 847], ["2026-05-22", 568, 217, 785], ["2026-05-23", 739, 548, 1287], ["2026-05-24", 631, 304, 935], ["2026-05-25", 451, 223, 674], ["2026-05-26", 474, 195, 669], ["2026-05-27", 453, 91, 544], ["2026-05-28", 363, 122, 485], ["2026-05-29", 378, 94, 472], ["2026-05-30", 438, 99, 537], ["2026-05-31", 428, 137, 565], ["2026-06-01", 424, 153, 577], ["2026-06-02", 410, 145, 555], ["2026-06-03", 378, 169, 547], ["2026-06-04", 396, 171, 567], ["2026-06-05", 385, 159, 544], ["2026-06-06", 350, 207, 557], ["2026-06-07", 434, 291, 725], ["2026-06-08", 356, 215, 571], ["2026-06-09", 361, 215, 576], ["2026-06-10", 197, 105, 302]];
 const DYN_CPI=[["2026-03-12", null, null, null], ["2026-03-13", null, null, null], ["2026-03-14", null, null, null], ["2026-03-15", null, null, null], ["2026-03-16", null, null, null], ["2026-03-17", null, null, null], ["2026-03-18", null, null, null], ["2026-03-19", null, null, null], ["2026-03-20", 0.00, 0.00, 0.00], ["2026-03-21", 0.00, 0.00, 0.00], ["2026-03-22", 0.00, 0.00, 0.00], ["2026-03-23", 0.00, 0.00, 0.00], ["2026-03-24", 0.00, 0.00, 0.00], ["2026-03-25", 0.00, 0.00, 0.00], ["2026-03-26", 0.00, 0.00, 0.00], ["2026-03-27", 0.00, 0.00, 0.00], ["2026-03-28", 0.00, 0.00, 0.00], ["2026-03-29", 0.00, 0.00, 0.00], ["2026-03-30", 0.00, 0.00, 0.00], ["2026-03-31", 0.00, 0.00, 0.00], ["2026-04-01", 0.00, 0.00, 0.00], ["2026-04-02", 0.00, 0.00, 0.00], ["2026-04-03", 0.00, 0.00, 0.00], ["2026-04-04", 0.00, 0.00, 0.00], ["2026-04-05", 0.00, 0.00, 0.00], ["2026-04-06", 0.00, 0.00, 0.00], ["2026-04-07", 0.00, 0.00, 0.00], ["2026-04-08", 0.00, 0.00, 0.00], ["2026-04-09", 0.00, 0.00, 0.00], ["2026-04-10", 0.00, 0.00, 0.00], ["2026-04-11", 0.00, 0.00, 0.00], ["2026-04-12", 0.00, 0.00, 0.00], ["2026-04-13", 0.00, 0.00, 0.00], ["2026-04-14", 0.00, 0.00, 0.00], ["2026-04-15", 0.00, 0.00, 0.00], ["2026-04-16", 0.00, 0.00, 0.00], ["2026-04-17", 0.00, 0.00, 0.00], ["2026-04-18", 0.00, 0.00, 0.00], ["2026-04-19", 0.00, 0.00, 0.00], ["2026-04-20", 0.00, 0.00, 0.00], ["2026-04-21", 0.00, 0.00, 0.00], ["2026-04-22", 0.00, 0.00, 0.00], ["2026-04-23", 0.00, 0.00, 0.00], ["2026-04-24", 0.00, 0.00, 0.00], ["2026-04-25", 0.00, 0.00, 0.00], ["2026-04-26", 0.00, 0.00, 0.00], ["2026-04-27", 0.00, 0.00, 0.00], ["2026-04-28", 0.00, 0.00, 0.00], ["2026-04-29", 0.00, 0.00, 0.00], ["2026-04-30", 0.00, 0.00, 0.00], ["2026-05-01", 0.00, 0.00, 0.00], ["2026-05-02", 0.00, 0.00, 0.00], ["2026-05-03", 0.00, 0.00, 0.00], ["2026-05-04", 0.00, 0.00, 0.00], ["2026-05-05", 0.00, 0.00, 0.00], ["2026-05-06", 0.00, 0.00, 0.00], ["2026-05-07", 0.00, 0.00, 0.00], ["2026-05-08", 0.00, 0.00, 0.00], ["2026-05-09", 0.00, 0.00, 0.00], ["2026-05-10", 0.00, 0.00, 0.00], ["2026-05-11", 0.09, 0.00, 0.08], ["2026-05-12", 0.17, 0.09, 0.17], ["2026-05-13", 0.25, 0.16, 0.25], ["2026-05-14", 0.37, 0.22, 0.37], ["2026-05-15", 0.49, 0.29, 0.49], ["2026-05-16", 0.61, 0.36, 0.60], ["2026-05-17", 0.74, 0.46, 0.73], ["2026-05-18", 0.77, 0.60, 0.76], ["2026-05-19", 0.79, 0.83, 0.79], ["2026-05-20", 0.81, 1.02, 0.82], ["2026-05-21", 0.83, 1.08, 0.85], ["2026-05-22", 0.84, 1.11, 0.87], ["2026-05-23", 0.88, 1.09, 0.92], ["2026-05-24", 0.91, 1.12, 0.95], ["2026-05-25", 0.97, 1.14, 1.01], ["2026-05-26", 1.04, 1.16, 1.07], ["2026-05-27", 1.07, 1.17, 1.09], ["2026-05-28", 1.08, 1.15, 1.10], ["2026-05-29", 1.07, 1.16, 1.08], ["2026-05-30", 1.04, 1.25, 1.07], ["2026-05-31", 1.05, 1.28, 1.08], ["2026-06-01", 1.01, 1.33, 1.03], ["2026-06-02", 0.94, 1.11, 0.95], ["2026-06-03", 0.95, 0.00, 0.94], ["2026-06-04", 0.93, 0.00, 0.92], ["2026-06-05", 0.93, 0.00, 0.92], ["2026-06-06", 0.94, 0.00, 0.93], ["2026-06-07", 0.93, 0.05, 0.92], ["2026-06-08", 0.92, 0.10, 0.92], ["2026-06-09", 0.94, 0.12, 0.93], ["2026-06-10", 0.89, 0.15, 0.88]];
 let dynCurrent='installs';
+const cpiHidden=new Set();
+function toggleCpiSeries(name){
+if(cpiHidden.has(name))cpiHidden.delete(name);else cpiHidden.add(name);
+document.querySelectorAll('#cpiToggles .fb').forEach(b=>b.classList.toggle('active',!cpiHidden.has(b.dataset.series)));
+drawDynChart();
+}
 function fmtD(d){const p=d.split('-');return p[2].replace(/^0/,'')+'.'+p[1].replace(/^0/,'')}
 function fmtN(n){return n.toLocaleString('ru-RU')}
 function fmtDShort(d){const p=d.split('-');const m=parseInt(p[1]);return p[2].replace(/^0/,'')+'.'+(m<10?'0'+m:m)}
 function switchDynChart(id){
 dynCurrent=id;
 document.querySelectorAll('#dynChartSelector .fb').forEach(b=>{b.classList.toggle('active',b.dataset.chart===id)});
+const tg=document.getElementById('cpiToggles');if(tg)tg.style.display=(id==='cpi')?'flex':'none';
 drawDynChart();
 renderDynTable();
 }
@@ -1868,12 +1881,13 @@ config={title:'🏬 Загрузки из сторов (App Store + Google Play)
 data:DYN_STORES.map(d=>({date:d[0],label:fmtD(d[0]),values:[d[2],d[1]],labels:['App Store','Google Play'],colors:['var(--accent)','var(--pos)']})),
 legend:[{c:'var(--accent)',l:'🍎 App Store'},{c:'var(--pos)',l:'🤖 Google Play'}]};
 }else if(dynCurrent==='cpi'){
-config={title:'💰 CPI по дням (AF-расход, 7-дн скольз.)',sub:'Стоимость установки $ · источник AppsFlyer (≠ кабинетный CPI) · TikTok нет дневного расхода',type:'line',
-series:[
-{data:DYN_CPI.filter(d=>d[3]!=null).map(d=>({x:fmtD(d[0]),y:d[3]})),color:'var(--accent)',label:'Общий'},
-{data:DYN_CPI.filter(d=>d[1]!=null).map(d=>({x:fmtD(d[0]),y:d[1]})),color:'var(--warn)',label:'Meta'},
-{data:DYN_CPI.filter(d=>d[2]!=null).map(d=>({x:fmtD(d[0]),y:d[2]})),color:'var(--pos)',label:'Google'}
-],yPrefix:'$',yMin:0,allLabels:true};
+const cpiAll=[
+{data:DYN_CPI.map(d=>({x:fmtD(d[0]),y:d[3]})),color:'var(--accent)',label:'Общий'},
+{data:DYN_CPI.map(d=>({x:fmtD(d[0]),y:d[1]})),color:'var(--warn)',label:'Meta'},
+{data:DYN_CPI.map(d=>({x:fmtD(d[0]),y:d[2]})),color:'var(--pos)',label:'Google'}
+];
+config={title:'💰 CPI по дням (AF-расход, 7-дн скольз.)',sub:'Стоимость установки $ · источник AppsFlyer (≠ кабинетный CPI) · TikTok нет дневного расхода · пунктир = медиана · наведи на точку',type:'line',
+series:cpiAll.filter(s=>!cpiHidden.has(s.label)),yPrefix:'$',yMin:0,allLabels:true,showMedian:true};
 }
 titleEl.textContent=config.title;
 subEl.textContent=config.sub;
@@ -1963,6 +1977,7 @@ return svg;
 }
 function renderLineChart(cfg){
 const allSeries=cfg.series;
+if(!allSeries.length)return '<div style="padding:40px;text-align:center;color:var(--text-4)">Выберите хотя бы одну линию</div>';
 const labels=allSeries[0].data.map(d=>d.x);
 const n=labels.length;
 let yMax=cfg.yMax||0;
@@ -2008,16 +2023,25 @@ if(started){
 svg+='<path d="'+linePath+' L'+lastX+','+(P.t+cH)+' L'+firstX+','+(P.t+cH)+' Z" fill="'+s.color+'" fill-opacity="0.08"/>';
 svg+='<path d="'+linePath+'" fill="none" stroke="'+s.color+'" stroke-width="2.5" stroke-linejoin="round"/>';
 }
+const fmtV=v=>prefix?prefix+v.toFixed(2):(suffix==='%'?v.toFixed(1)+suffix:fmtN(v));
 s.data.forEach((d,i)=>{
 if(d.y==null)return;
 const x=px(i),y=py(d.y);
-svg+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="'+s.color+'" stroke="var(--bg-elev)" stroke-width="2"/>';
+svg+='<circle cx="'+x+'" cy="'+y+'" r="4" fill="'+s.color+'" stroke="var(--bg-elev)" stroke-width="2"><title>'+s.label+' · '+d.x+' · '+fmtV(d.y)+'</title></circle>';
 if(cfg.allLabels||n<=15||i%Math.max(1,Math.floor(n/12))===0||i===n-1){
-const vLabel=prefix?prefix+d.y.toFixed(2):(suffix==='%'?d.y.toFixed(1)+suffix:fmtN(d.y));
 const dy=cfg.allLabels?(si===0?-11:si===1?17:-25):-10;
-svg+='<text x="'+x+'" y="'+(y+dy)+'" fill="'+s.color+'" font-size="9" font-weight="700" text-anchor="middle">'+vLabel+'</text>';
+svg+='<text x="'+x+'" y="'+(y+dy)+'" fill="'+s.color+'" font-size="9" font-weight="700" text-anchor="middle">'+fmtV(d.y)+'</text>';
 }
 });
+if(cfg.showMedian){
+const vals=s.data.filter(d=>d.y!=null).map(d=>d.y).sort((a,b)=>a-b);
+if(vals.length){
+const med=vals.length%2?vals[(vals.length-1)/2]:(vals[vals.length/2-1]+vals[vals.length/2])/2;
+const my=py(med);
+svg+='<line x1="'+P.l+'" y1="'+my+'" x2="'+(svgW-P.r)+'" y2="'+my+'" stroke="'+s.color+'" stroke-width="1.5" stroke-dasharray="6,4" opacity="0.6"><title>Медиана '+s.label+': '+fmtV(med)+'</title></line>';
+svg+='<text x="'+(svgW-P.r-2)+'" y="'+(my-4)+'" fill="'+s.color+'" font-size="9" font-weight="700" text-anchor="end">мед '+fmtV(med)+'</text>';
+}
+}
 });
 svg+='</svg></div>';
 return svg;
