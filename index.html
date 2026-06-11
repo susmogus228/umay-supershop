@@ -219,6 +219,25 @@ setTimeout(() => document.getElementById('pwInput').focus(), 100);
   <div id="chartTip" style="display:none;position:absolute;pointer-events:none;z-index:50;background:var(--bg-inset);border:1px solid var(--border-strong);border-radius:6px;padding:5px 9px;font-size:11px;font-weight:700;color:var(--text);white-space:nowrap;box-shadow:0 4px 12px rgba(0,0,0,.4)"></div>
 </div>
 <div id="dynTableContainer" style="margin-bottom:20px"></div>
+<div id="cpiExtra" style="display:none">
+<div class="section">
+  <div class="st"><span class="icon">📊</span> Сравнение каналов <span class="cb">CPI vs объём | AF + кабинет</span></div>
+  <div class="bar-chart">
+    <div style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:14px">Установки по платным каналам (AF)</div>
+    <div class="bi"><div class="bl">Meta (And+iOS)</div><div class="bt"><div class="bf blue" style="width:100%">92 548</div></div><div class="bv b">74.9%</div></div>
+    <div class="bi"><div class="bl">Google Ads</div><div class="bt"><div class="bf orange" style="width:4.8%">5 034</div></div><div class="bv">3.7%</div></div>
+    <div class="bi"><div class="bl">TikTok 🎵</div><div class="bt"><div class="bf purple" style="width:5.5%">5 102</div></div><div class="bv">4.2%</div></div>
+    <div class="bi"><div class="bl">ASA</div><div class="bt"><div class="bf purple" style="width:0.7%">559</div></div><div class="bv">0.5%</div></div>
+    <div class="bi"><div class="bl">Instagram</div><div class="bt"><div class="bf purple" style="width:0.1%">53</div></div><div class="bv">0.05%</div></div>
+    <div style="margin-top:14px;font-size:13px;color:var(--text);font-weight:700">CPI по каналам ($)</div>
+    <div class="bi"><div class="bl">Meta Android</div><div class="bt"><div class="bf blue" style="width:67%">$0.37</div></div><div class="bv"></div></div>
+    <div class="bi"><div class="bl">TikTok Android 🎵</div><div class="bt"><div class="bf green" style="width:60%">$0.33</div></div><div class="bv g">лучший CPI</div></div>
+    <div class="bi"><div class="bl">Google Android</div><div class="bt"><div class="bf green" style="width:63%">$0.35</div></div><div class="bv"></div></div>
+    <div class="bi"><div class="bl">Meta iOS</div><div class="bt"><div class="bf orange" style="width:100%">$0.60</div></div><div class="bv y"></div></div>
+    <div class="bi"><div class="bl">Google iOS</div><div class="bt"><div class="bf orange" style="width:100%">$6.21</div></div><div class="bv rd">самый дорогой</div></div>
+  </div>
+</div>
+</div>
 <div class="notes">
 <h3>⚡ Ключевые выводы по динамике</h3>
 <ul>
@@ -387,23 +406,6 @@ setTimeout(() => document.getElementById('pwInput').focus(), 100);
     <tfoot><tr><td colspan="4">ИТОГО TikTok</td><td class="r">5 174</td><td class="r">1930.88</td><td class="r">0.37</td><td class="r">4 263 542</td><td class="r">0.00%</td></tr></tfoot>
   </table>
 </div>
-<div class="section">
-  <div class="st"><span class="icon">📊</span> Сравнение каналов <span class="cb">CPI vs объём | AF + кабинет</span></div>
-  <div class="bar-chart">
-    <div style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:14px">Установки по платным каналам (AF)</div>
-    <div class="bi"><div class="bl">Meta (And+iOS)</div><div class="bt"><div class="bf blue" style="width:100%">92 548</div></div><div class="bv b">74.9%</div></div>
-    <div class="bi"><div class="bl">Google Ads</div><div class="bt"><div class="bf orange" style="width:4.8%">5 034</div></div><div class="bv">3.7%</div></div>
-    <div class="bi"><div class="bl">TikTok 🎵</div><div class="bt"><div class="bf purple" style="width:5.5%">5 102</div></div><div class="bv">4.2%</div></div>
-    <div class="bi"><div class="bl">ASA</div><div class="bt"><div class="bf purple" style="width:0.7%">559</div></div><div class="bv">0.5%</div></div>
-    <div class="bi"><div class="bl">Instagram</div><div class="bt"><div class="bf purple" style="width:0.1%">53</div></div><div class="bv">0.05%</div></div>
-    <div style="margin-top:14px;font-size:13px;color:var(--text);font-weight:700">CPI по каналам ($)</div>
-    <div class="bi"><div class="bl">Meta Android</div><div class="bt"><div class="bf blue" style="width:67%">$0.37</div></div><div class="bv"></div></div>
-    <div class="bi"><div class="bl">TikTok Android 🎵</div><div class="bt"><div class="bf green" style="width:60%">$0.33</div></div><div class="bv g">лучший CPI</div></div>
-    <div class="bi"><div class="bl">Google Android</div><div class="bt"><div class="bf green" style="width:63%">$0.35</div></div><div class="bv"></div></div>
-    <div class="bi"><div class="bl">Meta iOS</div><div class="bt"><div class="bf orange" style="width:100%">$0.60</div></div><div class="bv y"></div></div>
-    <div class="bi"><div class="bl">Google iOS</div><div class="bt"><div class="bf orange" style="width:100%">$6.21</div></div><div class="bv rd">самый дорогой</div></div>
-  </div>
-</div>
 <div class="notes">
 <h3 style="color:oklch(0.85 0.14 320)">⚡ Выводы по TikTok</h3>
 <ul>
@@ -547,6 +549,34 @@ renderOrdersChart();
 renderRegions('onlineRegions', REGIONS_ONLINE, 'var(--accent)');
 renderRegions('offlineRegions', REGIONS_OFFLINE, 'var(--warn)');
 });</script>
+<div class="section">
+  <div class="st">
+    <span class="icon">🔄</span> Повторные покупки — настоящий retention
+    <span class="cb" style="background:oklch(0.3 0.12 320 / .35);color:oklch(0.85 0.14 320)">🆕 ОБНОВЛЕНО | PostHog repeat_buyers | данные на 11 июня</span>
+  </div>
+
+  <div class="two-col">
+    <div class="bar-chart">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px">Repeat purchase rate (вернувшиеся за 2-й покупкой)</div>
+      <div class="bi"><div class="bl">Всего покупателей</div><div class="bt"><div class="bf blue" style="width:100%">438</div></div><div class="bv">100%</div></div>
+      <div class="bi"><div class="bl">Из них вернулись</div><div class="bt"><div class="bf green" style="width:37.0%">162</div></div><div class="bv g b">36.99%</div></div>
+      <div class="bi"><div class="bl">Их повторных тх</div><div class="bt"><div class="bf orange" style="width:78.1%">342</div></div><div class="bv">×2.11 на юзера</div></div>
+      <div style="margin-top:12px;font-size:12px;color:oklch(0.85 0.14 160);font-weight:700">✅ Каждый 3-й покупатель возвращается за повторной покупкой</div>
+    </div>
+
+    <div class="bar-chart">
+      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px">⚠️ Reorder click vs реальные повторные</div>
+      <div class="bi"><div class="bl">order_reorder_clicked (AF)</div><div class="bt"><div class="bf orange" style="width:30.1%">102</div></div><div class="bv y">11.9% от заказов</div></div>
+      <div class="bi"><div class="bl">Реально повторных</div><div class="bt"><div class="bf green" style="width:100%">342</div></div><div class="bv g b">×3.3 больше</div></div>
+      <div style="margin-top:12px;font-size:12px;color:oklch(0.78 0.15 25);font-weight:700">⚠️ Кнопка reorder НЕ драйвит повторные покупки</div>
+      <div style="margin-top:6px;font-size:11px;color:var(--text-3);line-height:1.5">Юзеры возвращаются органически, а не через UI кнопку «заказать снова». Длинная доставка (3-4 нед) НЕ убивает retention для тех, кто прошёл первый цикл — реальное ядро лояльной аудитории больше чем кажется.</div>
+    </div>
+  </div>
+
+  <div style="background:oklch(0.3 0.12 200 / .12);border:1px solid oklch(0.55 0.14 200 / .35);border-radius:10px;padding:14px 18px;margin-top:16px;font-size:13px;color:var(--text)">
+    <strong style="color:oklch(0.85 0.14 200)">💡 Что это меняет в стратегии:</strong> repeat_rate вырос (35.98% → 36.60%, +0.62pp за 1 день) — <strong>returning buyers растут быстрее новых</strong>. Total_buyers: 428 → 429 (+1), returning 154 → 157 (+3), повторных тх 327 → 334 (+7, ×2.13 на юзера). Ядро лояльных активно — хороший сигнал на фоне общего падения трафика. <strong>Приоритет:</strong> исследовать категории/чек/time-to-repeat для 157 returning buyers.
+  </div>
+</div>
 </div>
 <div class="tab-content" id="tab-retention">
 <div class="kpi-row">
@@ -981,6 +1011,49 @@ renderRegions('offlineRegions', REGIONS_OFFLINE, 'var(--warn)');
     <div class="bi"><div class="bl">session_10min</div><div class="bt"><div class="bf purple" style="width:0.2%">1,580</div></div><div class="bv"></div></div>
   </div>
 </div>
+<div class="section">
+  <div class="st"><span class="icon">🎡</span> Колесо фортуны — конверсия в регистрацию <span class="cb">PostHog | 12 мар — 11 июня</span></div>
+  <div class="bar-chart">
+    <div class="bi"><div class="bl">Открытие колеса</div><div class="bt"><div class="bf blue" style="width:100%">468,914</div></div><div class="bv">100%</div></div>
+    <div class="bi"><div class="bl">Закрыли колесо</div><div class="bt"><div class="bf blue" style="width:24.3%">113,999</div></div><div class="bv y">24.3%</div></div>
+    <div class="bi"><div class="bl">Зарегистрировались</div><div class="bt"><div class="bf orange" style="width:9.1%">42,061</div></div><div class="bv g b">9.05%</div></div>
+    <div style="margin-top:12px;font-size:12px;color:oklch(0.85 0.14 160);font-weight:700">✅ Колесо — крупный источник регистраций: 42,561 из ~61 700 всех рег. в PostHog (~67%). Open → Register: 9.08% (учитывая все 6 вариантов). Конверсия колеса стабильна около 9% после длительного роста.</div>
+    <div style="margin-top:6px;font-size:12px;color:oklch(0.8 0.14 255)">💡 Шаг «Открытие колеса» = сумма react_native_lottery ru+en+kz + ru_web+kz_web+en_web (PostHog, все 6 вариантов), «Закрыли» = событие close_wheel, «Зарегистрировались» = registration_from_wheel</div>
+  </div>
+</div>
+<div class="section">
+  <div class="st"><span class="icon">🚪</span> Анализ ухода — где и почему уходят <span class="cb">PostHog | 12 мар — 11 июня</span></div>
+  <div class="two-col">
+    <div class="bar-chart">
+      <div style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:14px">Последнее событие перед уходом (топ-10)</div>
+      <div class="bi"><div class="bl">trending_section_viewed</div><div class="bt"><div class="bf orange" style="width:100%">9,317</div></div><div class="bv rd b">#1</div></div>
+      <div class="bi"><div class="bl">home_page_viewed</div><div class="bt"><div class="bf orange" style="width:79.2%">7,375</div></div><div class="bv rd">#2</div></div>
+      <div class="bi"><div class="bl">list_viewed</div><div class="bt"><div class="bf blue" style="width:42.2%">3,929</div></div><div class="bv">#3</div></div>
+      <div class="bi"><div class="bl">category_viewed</div><div class="bt"><div class="bf blue" style="width:28.8%">2,672</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">product_viewed</div><div class="bt"><div class="bf blue" style="width:28.3%">2,626</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">cart_viewed</div><div class="bt"><div class="bf purple" style="width:24.6%">2,290</div></div><div class="bv y">💥</div></div>
+      <div class="bi"><div class="bl">mini_cart_updated</div><div class="bt"><div class="bf purple" style="width:15.9%">1,483</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">category_page_viewed</div><div class="bt"><div class="bf blue" style="width:10.3%">954</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">checkout_started</div><div class="bt"><div class="bf purple" style="width:4.6%">424</div></div><div class="bv rd">💥</div></div>
+      <div class="bi"><div class="bl">product_added_to_cart</div><div class="bt"><div class="bf purple" style="width:1.9%">177</div></div><div class="bv">💥</div></div>
+      <div style="margin-top:10px;font-size:11px;color:oklch(0.78 0.15 25);font-weight:700">⚠️ 2 290 ушли прямо из корзины  429 — прямо с экрана checkout. Это критические точки потерь.</div>
+    </div>
+    <div class="bar-chart">
+      <div style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:14px">Экран закрытия приложения (топ-10)</div>
+      <div class="bi"><div class="bl">🎡 Колесо фортуны (lottery)</div><div class="bt"><div class="bf orange" style="width:100%">14,685</div></div><div class="bv rd b">#1</div></div>
+      <div class="bi"><div class="bl">🗺 react_native_map</div><div class="bt"><div class="bf blue" style="width:34.4%">5,059</div></div><div class="bv">#2</div></div>
+      <div class="bi"><div class="bl">👤 user_center</div><div class="bt"><div class="bf blue" style="width:3.3%">481</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">🏠 umayshop.kz (главная)</div><div class="bt"><div class="bf blue" style="width:2.4%">353</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">🏢 Франшиза (yandex)</div><div class="bt"><div class="bf blue" style="width:1.9%">296</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">🏢 umayfranchise</div><div class="bt"><div class="bf blue" style="width:1.8%">269</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">🎡 Lottery (kk)</div><div class="bt"><div class="bf blue" style="width:1.7%">253</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">📰 article_detail</div><div class="bt"><div class="bf blue" style="width:1.8%">259</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">🎡 Lottery (en)</div><div class="bt"><div class="bf blue" style="width:1.4%">213</div></div><div class="bv"></div></div>
+      <div class="bi"><div class="bl">🏢 Франшиза</div><div class="bt"><div class="bf blue" style="width:1.2%">182</div></div><div class="bv"></div></div>
+      <div style="margin-top:10px;font-size:11px;color:oklch(0.78 0.15 25);font-weight:700">🔴 Колесо фортуны = главный экран ухода (14,685). Проверить: закрывают после выигрыша? Не могут забрать приз?</div>
+    </div>
+  </div>
+</div>
 </div>
 <div class="tab-content" id="tab-funnel">
 <div style="background:linear-gradient(135deg,var(--bg-elev),var(--bg-elev-2));border:1px solid var(--accent);border-radius:12px;padding:20px;margin-bottom:24px">
@@ -1218,49 +1291,6 @@ renderRegions('offlineRegions', REGIONS_OFFLINE, 'var(--warn)');
   </div>
 </div>
 <div class="section">
-  <div class="st"><span class="icon">🎡</span> Колесо фортуны — конверсия в регистрацию <span class="cb">PostHog | 12 мар — 11 июня</span></div>
-  <div class="bar-chart">
-    <div class="bi"><div class="bl">Открытие колеса</div><div class="bt"><div class="bf blue" style="width:100%">468,914</div></div><div class="bv">100%</div></div>
-    <div class="bi"><div class="bl">Закрыли колесо</div><div class="bt"><div class="bf blue" style="width:24.3%">113,999</div></div><div class="bv y">24.3%</div></div>
-    <div class="bi"><div class="bl">Зарегистрировались</div><div class="bt"><div class="bf orange" style="width:9.1%">42,061</div></div><div class="bv g b">9.05%</div></div>
-    <div style="margin-top:12px;font-size:12px;color:oklch(0.85 0.14 160);font-weight:700">✅ Колесо — крупный источник регистраций: 42,561 из ~61 700 всех рег. в PostHog (~67%). Open → Register: 9.08% (учитывая все 6 вариантов). Конверсия колеса стабильна около 9% после длительного роста.</div>
-    <div style="margin-top:6px;font-size:12px;color:oklch(0.8 0.14 255)">💡 Шаг «Открытие колеса» = сумма react_native_lottery ru+en+kz + ru_web+kz_web+en_web (PostHog, все 6 вариантов), «Закрыли» = событие close_wheel, «Зарегистрировались» = registration_from_wheel</div>
-  </div>
-</div>
-<div class="section">
-  <div class="st"><span class="icon">🚪</span> Анализ ухода — где и почему уходят <span class="cb">PostHog | 12 мар — 11 июня</span></div>
-  <div class="two-col">
-    <div class="bar-chart">
-      <div style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:14px">Последнее событие перед уходом (топ-10)</div>
-      <div class="bi"><div class="bl">trending_section_viewed</div><div class="bt"><div class="bf orange" style="width:100%">9,317</div></div><div class="bv rd b">#1</div></div>
-      <div class="bi"><div class="bl">home_page_viewed</div><div class="bt"><div class="bf orange" style="width:79.2%">7,375</div></div><div class="bv rd">#2</div></div>
-      <div class="bi"><div class="bl">list_viewed</div><div class="bt"><div class="bf blue" style="width:42.2%">3,929</div></div><div class="bv">#3</div></div>
-      <div class="bi"><div class="bl">category_viewed</div><div class="bt"><div class="bf blue" style="width:28.8%">2,672</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">product_viewed</div><div class="bt"><div class="bf blue" style="width:28.3%">2,626</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">cart_viewed</div><div class="bt"><div class="bf purple" style="width:24.6%">2,290</div></div><div class="bv y">💥</div></div>
-      <div class="bi"><div class="bl">mini_cart_updated</div><div class="bt"><div class="bf purple" style="width:15.9%">1,483</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">category_page_viewed</div><div class="bt"><div class="bf blue" style="width:10.3%">954</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">checkout_started</div><div class="bt"><div class="bf purple" style="width:4.6%">424</div></div><div class="bv rd">💥</div></div>
-      <div class="bi"><div class="bl">product_added_to_cart</div><div class="bt"><div class="bf purple" style="width:1.9%">177</div></div><div class="bv">💥</div></div>
-      <div style="margin-top:10px;font-size:11px;color:oklch(0.78 0.15 25);font-weight:700">⚠️ 2 290 ушли прямо из корзины  429 — прямо с экрана checkout. Это критические точки потерь.</div>
-    </div>
-    <div class="bar-chart">
-      <div style="font-size:13px;color:var(--text);font-weight:700;margin-bottom:14px">Экран закрытия приложения (топ-10)</div>
-      <div class="bi"><div class="bl">🎡 Колесо фортуны (lottery)</div><div class="bt"><div class="bf orange" style="width:100%">14,685</div></div><div class="bv rd b">#1</div></div>
-      <div class="bi"><div class="bl">🗺 react_native_map</div><div class="bt"><div class="bf blue" style="width:34.4%">5,059</div></div><div class="bv">#2</div></div>
-      <div class="bi"><div class="bl">👤 user_center</div><div class="bt"><div class="bf blue" style="width:3.3%">481</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">🏠 umayshop.kz (главная)</div><div class="bt"><div class="bf blue" style="width:2.4%">353</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">🏢 Франшиза (yandex)</div><div class="bt"><div class="bf blue" style="width:1.9%">296</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">🏢 umayfranchise</div><div class="bt"><div class="bf blue" style="width:1.8%">269</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">🎡 Lottery (kk)</div><div class="bt"><div class="bf blue" style="width:1.7%">253</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">📰 article_detail</div><div class="bt"><div class="bf blue" style="width:1.8%">259</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">🎡 Lottery (en)</div><div class="bt"><div class="bf blue" style="width:1.4%">213</div></div><div class="bv"></div></div>
-      <div class="bi"><div class="bl">🏢 Франшиза</div><div class="bt"><div class="bf blue" style="width:1.2%">182</div></div><div class="bv"></div></div>
-      <div style="margin-top:10px;font-size:11px;color:oklch(0.78 0.15 25);font-weight:700">🔴 Колесо фортуны = главный экран ухода (14,685). Проверить: закрывают после выигрыша? Не могут забрать приз?</div>
-    </div>
-  </div>
-</div>
-<div class="section">
   <div class="st"><span class="icon">💰</span> Конверсия по ценовым сегментам <span class="cb">PostHog price_bucket</span></div>
   <table>
     <thead><tr><th>Ценовой бакет</th><th class="r">Юзеров в корзине</th><th class="r">Купили</th><th class="r">Конверсия</th><th>Вывод</th></tr></thead><tbody><tr><td class="b">1. Меньше $2</td><td class="r">5 653</td><td class="r g">213</td><td class="r g">3.77%</td><td><span class="badge b-gr">Лучший сегмент</span></td></tr><tr><td class="b">2. $2 – 6</td><td class="r">18 647</td><td class="r g">381</td><td class="r y">2.04%</td><td><span class="badge b-ye">Средне</span></td></tr><tr><td class="b">3. $6 – 10</td><td class="r">14 369</td><td class="r g">287</td><td class="r rd">2.00%</td><td><span class="badge b-ye">Средне</span></td></tr><tr><td class="b">4. $10 – 20</td><td class="r">14 440</td><td class="r g">280</td><td class="r rd">1.94%</td><td><span class="badge b-ye">Средне</span></td></tr><tr><td class="b">5. $20 – 40</td><td class="r">8 436</td><td class="r g">193</td><td class="r y">2.29%</td><td><span class="badge b-gr">Хорошо</span></td></tr><tr><td class="b">6. $40 – 100</td><td class="r">3 387</td><td class="r g">70</td><td class="r y">2.07%</td><td><span class="badge b-ye">Средне</span></td></tr><tr><td class="b">7. $100+</td><td class="r">571</td><td class="r g">16</td><td class="r y">2.80%</td><td><span class="badge b-gr">Хорошо</span></td></tr></tbody><tfoot><tr><td>ИТОГО</td><td class="r">65 503</td><td class="r">1 440</td><td class="r">2.20%</td><td>Лучший CR — сегмент Меньше $2</td></tr></tfoot>
@@ -1390,34 +1420,6 @@ renderRegions('offlineRegions', REGIONS_OFFLINE, 'var(--warn)');
       <li><strong>🟡 P2: Push CTR 9.46% — лифт ~+0.07pp/день</strong> — тренд: 7.5% → 8.4% → 8.8% → 9.1% → 9.2% → 9.46%. Лифт ~+0.07pp/день (стабильно низкий). Кампания исчерпывается. <strong>Запустить новую серию для поддержания темпа.</strong></li>
       <li><strong>🟢 P2: app_launch vs af_app_opened</strong> — два разных события (13 vs 236k). Унифицировать в трекинге, иначе будет путаница в воронке</li>
     </ul>
-  </div>
-</div>
-<div class="section">
-  <div class="st">
-    <span class="icon">🔄</span> Повторные покупки — настоящий retention
-    <span class="cb" style="background:oklch(0.3 0.12 320 / .35);color:oklch(0.85 0.14 320)">🆕 ОБНОВЛЕНО | PostHog repeat_buyers | данные на 11 июня</span>
-  </div>
-
-  <div class="two-col">
-    <div class="bar-chart">
-      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px">Repeat purchase rate (вернувшиеся за 2-й покупкой)</div>
-      <div class="bi"><div class="bl">Всего покупателей</div><div class="bt"><div class="bf blue" style="width:100%">438</div></div><div class="bv">100%</div></div>
-      <div class="bi"><div class="bl">Из них вернулись</div><div class="bt"><div class="bf green" style="width:37.0%">162</div></div><div class="bv g b">36.99%</div></div>
-      <div class="bi"><div class="bl">Их повторных тх</div><div class="bt"><div class="bf orange" style="width:78.1%">342</div></div><div class="bv">×2.11 на юзера</div></div>
-      <div style="margin-top:12px;font-size:12px;color:oklch(0.85 0.14 160);font-weight:700">✅ Каждый 3-й покупатель возвращается за повторной покупкой</div>
-    </div>
-
-    <div class="bar-chart">
-      <div style="font-size:13px;font-weight:700;color:var(--text);margin-bottom:14px">⚠️ Reorder click vs реальные повторные</div>
-      <div class="bi"><div class="bl">order_reorder_clicked (AF)</div><div class="bt"><div class="bf orange" style="width:30.1%">102</div></div><div class="bv y">11.9% от заказов</div></div>
-      <div class="bi"><div class="bl">Реально повторных</div><div class="bt"><div class="bf green" style="width:100%">342</div></div><div class="bv g b">×3.3 больше</div></div>
-      <div style="margin-top:12px;font-size:12px;color:oklch(0.78 0.15 25);font-weight:700">⚠️ Кнопка reorder НЕ драйвит повторные покупки</div>
-      <div style="margin-top:6px;font-size:11px;color:var(--text-3);line-height:1.5">Юзеры возвращаются органически, а не через UI кнопку «заказать снова». Длинная доставка (3-4 нед) НЕ убивает retention для тех, кто прошёл первый цикл — реальное ядро лояльной аудитории больше чем кажется.</div>
-    </div>
-  </div>
-
-  <div style="background:oklch(0.3 0.12 200 / .12);border:1px solid oklch(0.55 0.14 200 / .35);border-radius:10px;padding:14px 18px;margin-top:16px;font-size:13px;color:var(--text)">
-    <strong style="color:oklch(0.85 0.14 200)">💡 Что это меняет в стратегии:</strong> repeat_rate вырос (35.98% → 36.60%, +0.62pp за 1 день) — <strong>returning buyers растут быстрее новых</strong>. Total_buyers: 428 → 429 (+1), returning 154 → 157 (+3), повторных тх 327 → 334 (+7, ×2.13 на юзера). Ядро лояльных активно — хороший сигнал на фоне общего падения трафика. <strong>Приоритет:</strong> исследовать категории/чек/time-to-repeat для 157 returning buyers.
   </div>
 </div>
 <div class="section">
@@ -3986,6 +3988,7 @@ function switchDynChart(id){
 dynCurrent=id;
 document.querySelectorAll('#dynChartSelector .fb').forEach(b=>{b.classList.toggle('active',b.dataset.chart===id)});
 const tg=document.getElementById('cpiToggles');if(tg)tg.style.display=(id==='cpi')?'flex':'none';
+const ce=document.getElementById('cpiExtra');if(ce)ce.style.display=(id==='cpi')?'block':'none';
 drawDynChart();
 renderDynTable();
 }
